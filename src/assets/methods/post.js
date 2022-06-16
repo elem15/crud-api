@@ -1,21 +1,24 @@
-import users from "../../data/users.js";
-import failRes from "../responses/fail-res.js";
 import { v1 as uuid } from "uuid";
+
+import data from "../../data/index.js";
+import failRes from "../responses/fail-res.js";
+import userCheck from "../verifications/user-check.js";
+
 
 export default (req, res, path) => {
   if (path === '/api/users') {
-    req.on('data', (data) => {
-      const user = JSON.parse(data);
-      if (typeof user.username === 'string' && typeof user.age === 'number' && Array.isArray(user.hobbies)) {
+    req.on('data', (body) => {
+      const user = JSON.parse(body);      
+      if (userCheck(user)) {
         user.id = uuid();
-        users.push(user);
+        data.users.push(user);
         res.writeHead(201, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify(res.statusCode));
       } else {
-        failRes(res, 400, 'type of users');
+        failRes(res, 400, 'type of data.');
       }
     });
   } else {
-    failRes(res, 404, 'user');
+    failRes(res, 404, 'URL');
   }
 }

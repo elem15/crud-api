@@ -3,6 +3,7 @@ import http from 'http';
 import get from './assets/methods/get.js';
 import post from './assets/methods/post.js';
 import put from './assets/methods/put.js';
+import remove from './assets/methods/delete.js';
 const port = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
@@ -14,6 +15,8 @@ const server = http.createServer((req, res) => {
     post(req, res, path);
   } else if (method === 'PUT') {
     put(req, res, path);
+  } else if (method === 'DELETE') {
+    remove(res, path);
   }
 });
 
