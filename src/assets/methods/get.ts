@@ -1,9 +1,10 @@
-import data from "../../data/index.js";
-import failRes from "../responses/fail-res.js";
-import uuidCheck from "../verifications/uuid-check.js";
-import failServer from "../responses/fail-server.js";
+import { ServerResponse } from "http";
+import data from "../../data/index";
+import failRes from "../responses/fail-res";
+import uuidCheck from "../verifications/uuid-check";
+import failServer from "../responses/fail-server";
 
-export default (res, path) => {
+export default (res: ServerResponse, path: string): void => {
   if (path === '/api/users') {
     try {
       const arrOfUsers = data.users;

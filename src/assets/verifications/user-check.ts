@@ -1,4 +1,6 @@
-export default (user) => {
+import { newUser } from "../../types/user";
+
+export default (user: newUser) : boolean => {
   const length = Object.keys(user).length;
   if (length !== 3) {
     return false;

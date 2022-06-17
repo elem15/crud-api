@@ -1,18 +1,19 @@
-import http from 'http';
+import { createServer, IncomingMessage, ServerResponse } from 'http';
 import dotenv from 'dotenv';
-import get from './assets/methods/get.js';
-import post from './assets/methods/post.js';
-import put from './assets/methods/put.js';
-import remove from './assets/methods/delete.js';
-import failRes from './assets/responses/fail-res.js';
-import failServer from './assets/responses/fail-server.js';
+import get from './assets/methods/get';
+import post from './assets/methods/post';
+import put from './assets/methods/put';
+import remove from './assets/methods/delete';
+import failRes from './assets/responses/fail-res';
+import failServer from './assets/responses/fail-server';
 dotenv.config();
 
 const port = process.env.PORT || 3300;
 
-const server = http.createServer((req, res) => {
-  const { method, url } = req;
-  const path = url.replace(/\/?(?:\?.*)?$/, '').toLowerCase();
+const server = createServer((req: IncomingMessage, res: ServerResponse) => {
+  const url = req?.url || '';
+  const method = req?.method;
+  const path: string = url.replace(/\/?(?:\?.*)?$/, '').toLowerCase();
   if (method === 'GET') {
     get(res, path);
   } else if (method === 'POST') {
@@ -29,5 +30,6 @@ const server = http.createServer((req, res) => {
   })
 });
 
-server.listen(port, () => console.log(`server started on port ${port}; ` +
-  'press Ctrl-C to terminate....'));  
+server.listen(port, () => console.log(`server started on port ${port}; \n` 
++ `process in ${process.env.NODE_ENV} mode; \n`
++  'press Ctrl-C to terminate...'));  

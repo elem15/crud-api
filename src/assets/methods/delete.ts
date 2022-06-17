@@ -1,9 +1,11 @@
-import data from "../../data/index.js";
-import failRes from "../responses/fail-res.js";
-import uuidCheck from "../verifications/uuid-check.js";
-import failServer from "../responses/fail-server.js";
+import { ServerResponse } from 'http';
+import { fullUser } from "../../types/user";
+import data from "../../data/index";
+import failRes from "../responses/fail-res";
+import uuidCheck from "../verifications/uuid-check";
+import failServer from "../responses/fail-server";
 
-export default (res, path) => {
+export default (res: ServerResponse, path: string): void => {
   try {
     if (path.startsWith('/api/users/')) {
       const arrOfDir = path.split('/');
@@ -12,7 +14,7 @@ export default (res, path) => {
         failRes(res, 400, 'type of id');
         return;
       }
-      let user;
+      let user: fullUser | undefined ;
       try {
         user = data.users.find(user => user.id == num);
       } catch {

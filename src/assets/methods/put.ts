@@ -1,10 +1,11 @@
-import data from "../../data/index.js";
-import failRes from "../responses/fail-res.js";
-import userCheck from "../verifications/user-check.js";
-import uuidCheck from "../verifications/uuid-check.js";
-import failServer from "../responses/fail-server.js";
+import { IncomingMessage, ServerResponse } from 'http';
+import data from "../../data/index";
+import failRes from "../responses/fail-res";
+import userCheck from "../verifications/user-check";
+import uuidCheck from "../verifications/uuid-check";
+import failServer from "../responses/fail-server";
 
-export default (req, res, path) => {
+export default (req: IncomingMessage, res: ServerResponse, path: string): void => {
   if (path.startsWith('/api/users/')) {
     const arrOfDir = path.split('/');
     const num = arrOfDir[arrOfDir.length - 1];

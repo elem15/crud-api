@@ -1,11 +1,11 @@
 import { v1 as uuid } from "uuid";
+import { IncomingMessage, ServerResponse } from 'http';
+import data from "../../data/index";
+import failRes from "../responses/fail-res";
+import userCheck from "../verifications/user-check";
+import failServer from "../responses/fail-server";
 
-import data from "../../data/index.js";
-import failRes from "../responses/fail-res.js";
-import userCheck from "../verifications/user-check.js";
-import failServer from "../responses/fail-server.js";
-
-export default (req, res, path) => {
+export default (req: IncomingMessage, res: ServerResponse, path: string): void => {
   if (path === '/api/users') {
     req.on('data', (body) => {
       const user = JSON.parse(body);
