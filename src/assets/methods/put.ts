@@ -29,7 +29,7 @@ export default (req: IncomingMessage, res: ServerResponse, path: string): void =
               data.users[idx] = { ...user, ...newUser };
             }
           })
-          res.writeHead(201, { 'Content-Type': 'application/json' });
+          res.writeHead(200, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify(res.statusCode));
         } else {
           failRes(res, 400, 'type of users');
