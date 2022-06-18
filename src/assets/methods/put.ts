@@ -6,6 +6,7 @@ import uuidCheck from "../verifications/uuid-check";
 import failServer from "../responses/fail-server";
 
 export default (req: IncomingMessage, res: ServerResponse, path: string): void => {
+  
   if (path.startsWith('/api/users/')) {
     const arrOfDir = path.split('/');
     const num = arrOfDir[arrOfDir.length - 1];

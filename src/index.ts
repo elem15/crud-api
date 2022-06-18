@@ -10,7 +10,7 @@ dotenv.config();
 
 const port = process.env.PORT || 3300;
 
-const server = createServer((req: IncomingMessage, res: ServerResponse) => {
+export const server = createServer((req: IncomingMessage, res: ServerResponse) => {
   const url = req?.url || '';
   const method = req?.method;
   const path: string = url.replace(/\/?(?:\?.*)?$/, '').toLowerCase();

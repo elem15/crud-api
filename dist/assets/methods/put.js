@@ -33,7 +33,7 @@ exports.default = (req, res, path) => {
                             index_1.default.users[idx] = Object.assign(Object.assign({}, user), newUser);
                         }
                     });
-                    res.writeHead(201, { 'Content-Type': 'application/json' });
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify(res.statusCode));
                 }
                 else {
