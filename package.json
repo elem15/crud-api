@@ -12,7 +12,8 @@
     "prod": "cross-env NODE_ENV=production node dist/index.js",
     "start:tsc": "start npm run tsc && npm run start",
     "start:dev": "cross-env NODE_ENV=development nodemon src/index.ts",
-    "start:prod": "npm run build && npm run prod"
+    "start:prod": "npm run build && npm run prod",
+    "start:multi": "cross-env NODE_ENV=production node dist/cluster.js"
   },
   "repository": {
     "type": "git",
