@@ -8,7 +8,7 @@ import failRes from './assets/responses/fail-res';
 import failServer from './assets/responses/fail-server';
 dotenv.config();
 
-const port = process.env.PORT || 3300;
+const port = process.env.PORT || 3000;
 
 export const server = createServer((req: IncomingMessage, res: ServerResponse) => {
   const url = req?.url || '';
