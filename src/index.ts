@@ -1,14 +1,15 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import get from './assets/methods/get';
 import post from './assets/methods/post';
 import put from './assets/methods/put';
 import remove from './assets/methods/delete';
 import failRes from './assets/responses/fail-res';
 import failServer from './assets/responses/fail-server';
-dotenv.config();
+// dotenv.config();
 
 const port = process.env.PORT || 3000;
+// const port = 3500;
 
 export const server = createServer((req: IncomingMessage, res: ServerResponse) => {
   const url = req?.url || '';
